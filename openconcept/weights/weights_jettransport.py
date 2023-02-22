@@ -753,7 +753,7 @@ class EngineSystems_JetTransport(ExplicitComponent):
     def compute(self, inputs, outputs):
         W_engineSystems_Roskam = (
             9.3300 * 0.0010 ** 1.0780 * inputs["W_engine"] ** 1.0780
-            + 0.0260 * inputs["ac|propulsion|engine|rating"] ** (1 / 2)
+            + 0.2600 * inputs["ac|propulsion|engine|rating"] ** (1 / 2)
             + 0.0820 * inputs["ac|propulsion|engine|rating"] ** 0.6500
             + 0.0340 * inputs["ac|propulsion|engine|rating"]
         )
@@ -762,7 +762,7 @@ class EngineSystems_JetTransport(ExplicitComponent):
     def compute_partials(self, inputs, J):
         J["W_engineSystems", "ac|propulsion|engine|rating"] = (
             0.0533 / inputs["ac|propulsion|engine|rating"] ** 0.3500
-            + 0.0130 / inputs["ac|propulsion|engine|rating"] ** 0.5000
+            + 0.1300 / inputs["ac|propulsion|engine|rating"] ** 0.5000
             + 0.0340
         )
         J["W_engineSystems", "W_engine"] = 9.3300 * 0.0010 ** 1.0780 * 1.0780 * inputs["W_engine"] ** 0.0780
